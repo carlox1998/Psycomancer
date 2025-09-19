@@ -1,0 +1,32 @@
+{
+    "characterID": "Personaje1_Victor",
+    "name": "Victor",
+    "characterAura": {
+        "r": 0.9056603908538818,
+        "g": 0.3794631063938141,
+        "b": 0.0,
+        "a": 0.0
+    },
+    "emotionsList": [
+        {
+            "name": "Joy",
+            "intensity": 60.0,
+            "angle": 0.0
+        },
+        {
+            "name": "Wrath",
+            "intensity": 5.0,
+            "angle": 0.0
+        },
+        {
+            "name": "Sadness",
+            "intensity": -10.0,
+            "angle": 0.0
+        },
+        {
+            "name": "Fear",
+            "intensity": -30.0,
+            "angle": 0.0
+        }
+    ]
+}
