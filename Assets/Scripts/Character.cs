@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using Unity.UI;
+
 public class Character : MonoBehaviour
 {
     public string characterID;
@@ -46,11 +48,27 @@ public class Character : MonoBehaviour
             emotions["Sadness"] = new Emotion("Sadness",0f,180f);
             emotions["Fear"] = new Emotion("Fear",0f,270f);
         }
+        CalculateEmotionColor();
 
     }
 
     void CalculateEmotionColor(){
-
+        float x= 0f, y = 0f;
+        foreach (Emotion e in emotionsList)
+        {
+            float radiant= e.angle * Mathf.Deg2Rad;
+            x+= e.intensity * Mathf.Cos(radiant);
+            y+= e.intensity * Mathf.Sin(radiant);
+        }
+        float magnitude = Mathf.Sqrt(x*x + y*y);
+        float angleCalculated= Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+        
+        if(angleCalculated<0) angleCalculated +=360f;
+        
+        float colorHSV = angleCalculated/360f;
+        float value = Mathf.Clamp01(magnitude / 100f);
+        characterAura = Color.HSVToRGB(colorHSV,1f,value);
+        characterAura.a= 0.785f;
     }
 
     void ModifyEmotion(Emotion emotion){
